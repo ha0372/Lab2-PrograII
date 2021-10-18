@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Deploy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+<body>
+    <div class="text-center"><h1 class="animate__animated animate__fadeInDown"><i class="fas fa-users"></i>  Personas  <i class="fas fa-users"></i></h1></div>
+
+
+    <hr />
+    <div> @Html.ActionLink("Guardado", "Save", new { @class = "btn btn-success" })</div>
+   
+    <hr />
+    <table id="tableP" class="table table-dark table-borderless">
+
+        <thead>
+            <tr>
+                <th>Persona ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+    </table>
+
+
+
+    @section scripts{
+
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                var tabla = $('#tableP').DataTable({
+                    "ajax": {
+                        "url": '/Home/ViewPersons',
+                        "type": "get",
+                        "datatype": "json"
+                    },
+                    "columns": [
+                        { "data": "idPersona", "name": "idPersona", "autoWidth": true },
+                        { "data": "nombrePersona", "name": "nombrePersona", "autoWidth": true },
+                        { "data": "edadPersona", "name": "edadPersona", "autoWidth": true },
+                        { "data": "descripcionPersona", "name": "descripcionPersona", "autoWidth": true }
+                    ]
+                });
+            });
+        </script>
+
+    }
+</body>
+</html>
+

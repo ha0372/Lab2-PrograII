@@ -1,0 +1,101 @@
+﻿@model Laboratorio2.Models.ViewModels.PersonaViewModels;
+@{
+    ViewData["Title"] = "Save";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        .contenedorp {
+            position: absolute;
+            height: 400px;
+            width: 600px;
+            background: #00cc66;
+            text-align: center;
+            top: 50%;
+            right: 50%;
+            transform: translate(50%,-50%);
+            border-radius: 30px;
+        }
+
+        .cardbody {
+            background: white;
+            height: 90%;
+            padding: 20px;
+            border-bottom-right-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+        body {
+            background-color: brown;
+            background-size: cover;
+        }
+
+        .estilotexto {
+            margin-top: 10%;
+        }
+
+            .estilotexto button {
+                width: 70%;
+                margin-bottom: 40px;
+            }
+    </style>
+</head>
+<body>
+
+    <hr />
+    <h1>@ViewBag.mensaje</h1>
+    <hr />
+
+    @using (Html.BeginForm("Save", "Home", FormMethod.Post))
+    {
+
+
+        <div class="contenedorp">
+            <div class="titulo">
+                <h1 class="animate__animated animate__backInDown"><i class="fas fa-save"></i>  Save  <i class="fas fa-save"></i></h1>
+            </div>
+            <div class="cardbody">
+                <div class="estilotexto">
+                    @Html.LabelFor(n => n.NombrePersona)
+                    @Html.TextBoxFor(n => n.NombrePersona)
+                    @Html.ValidationMessageFor(n => n.NombrePersona)
+                    <br />
+                    @Html.LabelFor(m => m.EdadPersona)
+                    @Html.TextBoxFor(m => m.EdadPersona)
+                    @Html.ValidationMessageFor(m => m.EdadPersona)
+                    <br />
+                    @Html.LabelFor(s => s.DescripcionPersona)
+                    @Html.TextBoxFor(s => s.DescripcionPersona)
+                    @Html.ValidationMessageFor(s => s.DescripcionPersona)
+                    <br />
+                    <br />
+                    <button type="submit"><i class="fas fa-save"></i> Save</button>
+                </div>
+
+            </div>
+            <h1>@ViewBag.mensaje</h1>
+        </div>
+    }
+</body>
+</html>
+
+@*@Html.LabelFor(n => n.NombrePersona)
+    @Html.TextBoxFor(n => n.NombrePersona)
+    @Html.ValidationMessageFor(n => n.NombrePersona)
+    <br />
+    @Html.LabelFor(m => m.EdadPersona)
+    @Html.TextBoxFor(m => m.EdadPersona)
+    @Html.ValidationMessageFor(m => m.EdadPersona)
+    <br />
+    @Html.LabelFor(s => s.DescripcionPersona)
+    @Html.TextBoxFor(s => s.DescripcionPersona)
+    @Html.ValidationMessageFor(s => s.DescripcionPersona)
+    <br />
+    <br />
+    <input type="submit" value="Save" />*@
